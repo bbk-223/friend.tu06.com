@@ -35,7 +35,7 @@ body{
 }
 
 .site-nav .hamburger-icon{
-    visibility: hidden;
+    display: none;
     float: right;
     width: 40px;
     margin-top: .8rem;
@@ -43,19 +43,22 @@ body{
     border: solid black 2px;
 }
 
-.site-nav .ul-2{
-    clear: both;
-    float: right;
-}
 .site-nav .ul-2 {
-    visibility: hidden;
+    display: none;
     list-style-type: none;
-    position: relative;
-    right: 1rem;
-    bottom: 1rem;
+
     border: solid red 1px;
     padding: 1rem;
     background-color: black;
+}
+.site-nav .hamburger-icon~.ul-2{
+    position: relative;
+    right: 1rem;
+    top: .05rem;
+    float: right;
+    clear: both;
+    width: 190px;
+
 }
 .site-nav .ul-2 :nth-child(2), .site-nav .ul-2 :nth-child(3){
     margin-top: .8rem;
@@ -64,6 +67,7 @@ body{
     color: white;
 }
 .site-nav .ul-1{
+    clear: both;
     float: right;
     margin-top: 25px;
 
@@ -73,8 +77,33 @@ body{
     margin-right: 15px;
     font-size: 17px;
 }
+
+.site-nav .ul-1 .ul-2{
+    position: relative;
+    left: .6rem;
+    top: .02rem;
+    width: 190px;
+}
+
+.site-nav .ul-1 .ul-2 li{
+    display: block;
+    margin-right: 15px;
+    font-size: 17px;
+}
+
 .site-nav ul a{
     text-decoration: none;
+}
+
+.user-dropdown:hover~.ul-2{
+    display: block;
+}
+.user-dropdown~.ul-2:hover{
+    display: block;
+}
+
+.hr{
+    color: red;
 }
 
 @media (max-width: 640px){
@@ -82,13 +111,13 @@ body{
         display: none;
     }
     .site-nav .hamburger-icon{
-        visibility: visible;
+        display: block;
     }
     .site-nav .hamburger-icon:hover~.ul-2{
-        visibility: visible;
+        display: block;
     }
     .site-nav .ul-2:hover{
-        visibility: visible;
+        display: block;
     }
 }
 

@@ -15,15 +15,42 @@
                 <img src="{{asset('icon/logo.png')}}" alt="Tu06.com">
                 <ul class="ul-1">
                     <li><a href="{{ route('main') }}">Freunde finden</a></li>
-                    <li><a href="{{ route('login') }}">Anmelden</a></li>
-                    <li>Neuer Nutzer? Starte <a href="{{ route('register') }}">hier</a></li>
+                    @guest
+                        <li><a href="{{ route('login') }}">Anmelden</a></li>
+                        <li>Neuer Nutzer? Starte <a href="{{ route('register') }}">hier</a></li>
+                    @endguest
+                    @auth
+                        <li>
+                            <a class="user-dropdown dropdown-toggle" href="#">{{ auth()->user()->name }}</a>
+                            <ul class="ul-2">
+                            <li><a class="" href="#">Edit Profile</a></li>
+                            <li><a class="" href="#">Change Password</a></li>
+                            <li><hr class="hr"></li>
+                            <li><a class="" href="{{ route('logout') }}">Logout</a></li>
+                            </ul>
+                        </li>              
+                    @endauth
                 </ul>
                 <img class="hamburger-icon" src="{{asset('icon/hamburger.png')}}" alt="">
-                <ul class="ul-2">
-                    <li><a href="{{ route('main') }}">Freunde finden</a></li>
-                    <li><a href="{{ route('login') }}">Einloggen</a></li>
-                    <li><a href="{{ route('register') }}">Registerierung</a></li>
-                </ul>
+                @guest
+                    <ul class="ul-2">
+                        <li><a href="{{ route('main') }}">Freunde finden</a></li>
+                        <li><a href="{{ route('login') }}">Einloggen</a></li>
+                        <li><a href="{{ route('register') }}">Registerierung</a></li>
+                    </ul>
+                @endguest
+
+                @auth
+                    <ul class="ul-2">
+                        <li>
+                            <a class="user-dropdown dropdown-toggle" href="#">{{ auth()->user()->name }}</a>
+                            <li><a class="" href="#">Edit Profile</a></li>
+                            <li><a class="" href="#">Change Password</a></li>
+                            <li><hr class="hr"></li>
+                            <li><a class="" href="{{ route('logout') }}">Logout</a></li>
+                        </li>
+                    </ul>              
+                @endauth
             </div>
         </nav>
     </header>
