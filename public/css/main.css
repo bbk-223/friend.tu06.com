@@ -106,6 +106,10 @@ body{
     color: red;
 }
 
+.logout-button{
+    color: white !important;
+}
+
 @media (max-width: 640px){
     .site-nav .ul-1{
         display: none;
