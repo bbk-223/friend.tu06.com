@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,4 @@ Route::get('/', function () {
     return view('home');
 })->name('main');
 
-
+Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
