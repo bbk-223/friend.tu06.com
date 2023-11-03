@@ -19,3 +19,4 @@ Route::get('/', function () {
 })->name('main');
 
 Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+Route::get('/settings/profile-information', [CustomAuthController::class, 'editProfile'])->name('user-profile-information.edit');
