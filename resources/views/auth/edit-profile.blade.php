@@ -20,8 +20,7 @@
         </div><!-- /.col-md-3 -->
 
         <div class="col-md-9">
-          <form action="{{ route('user-profile-information.update') }}" method="POST">
-                @csrf
+            <form action="{{ route('user-profile-information.update') }}" method="POST" enctype="multipart/form-data">                @csrf
                 @method('PUT')
               <div class="card">
                 <div class="card-header card-title">
@@ -61,22 +60,20 @@
                       </div>
                       <div class="form-group">
                         <label for="address">Address</label>
-                        <textarea name="address" value="{{ old('address', $user->address) }}" id="address" rows="2" class="form-control"></textarea>
-                      </div>
+                        <textarea name="address" id="address" rows="2" class="form-control">{{ old('address', $user->address) }}</textarea>                      </div>
                     </div>
                     <div class="offset-md-1 col-md-3">
                       <div class="form-group">
                         <label for="bio">Profile picture</label>
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                           <div class="fileinput-new img-thumbnail" style="width: 150px; height: 150px;">
-                            <img src="https://via.placeholder.com/150x150" alt="...">
-                          </div>
+                            <img src="{{ $user->profilePictureUrl() }}" alt="...">                          </div>
                           <div class="fileinput-preview fileinput-exists img-thumbnail"
                             style="max-width: 150px; max-height: 150px;"></div>
                           <div class="mt-2">
                             <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select
                                 image</span><span class="fileinput-exists">Change</span><input type="file"
-                                name="profile_picture"></span>
+                                name="profile_picture" accept="image/*"></span>
                             <a href="#" class="btn btn-outline-secondary fileinput-exists"
                               data-dismiss="fileinput">Remove</a>
                           </div>
