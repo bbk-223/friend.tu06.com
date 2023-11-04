@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\CustomAuthController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\CustomAuthController;
 
 /*
 |--------------------------------------------------------------------------

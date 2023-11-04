@@ -37,6 +37,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'favorites' => ['nullable', 'string', 'max:500'],
             'profile_picture' => ['nullable', 'image'],
         ])->validate();
+        
+            if(!isset($input['profile_picture'])){
+                $input['profile_picture'] = $user->profile_picture;
+            }
 
         $this->uploadProfilePicture($input);
 
@@ -65,11 +69,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         if (request()->hasFile('profile_picture')) {
             $id = request()->user()->id;
             if ($the_user = User::find($id)->profile_picture){
-                Storage::delete('profiles-images/' . $the_user);
+                Storage::delete($the_user);
             }
             $uploadedFile = $input['profile_picture'];
             $fileName = $uploadedFile->storeAs(
-                'profiles-images',
+                'profile-images',
                 'profile-user-' . $id .
                     '.' .
                     $uploadedFile->getClientOriginalExtension()

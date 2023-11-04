@@ -46,60 +46,92 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="text" name="phone" value="{{ old('phone', $user->phone) }}" id="phone" class="form-control">
+
+                      <div class="form-group mt-1">
+                        <label for="gender">Gender</label>
+                        <select class="form-select" id="gender" name="gender" aria-label="Default select example">
+                            <option {{ $user->gender == 'male' ? 'selected' : '' }} value="male">Male</option>
+                            <option {{ $user->gender == 'female' ? 'selected' : '' }} value="female">Female</option>
+                        </select>
                       </div>
-                      <div class="form-group">
-                        <label for="company">Company</label>
-                        <input type="text" name="company" value="{{ old('company', $user->company) }}" id="company" class="form-control">
+
+                      <div class="form-group mt-1">
+                        <label for="age">Age</label>
+                        <select class="form-select" id="age" name="age" aria-label="Default select example">
+                            @for ($i = 18; $i < 90; $i++)
+                            <option {{ $user->age == "$i" ? 'selected' : '' }} value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
                       </div>
+
+                      <div class="form-group mt-1">
+                        <label for="relationship">Relationship</label>
+                        <select class="form-select" id="relationship" name="relationship" aria-label="Default select example">
+                            <option {{ $user->relationship == 'single' ? 'selected' : '' }} value="single">Single</option>
+                            <option {{ $user->relationship == 'married' ? 'selected' : '' }} value="married">Married</option>
+                            <option {{ $user->relationship == 'divorced' ? 'selected' : '' }} value="divorced">Divorced</option>
+                        </select>
+                      </div>
+
                       <div class="form-group">
                         <label for="country">Country</label>
-                        <input type="text" name="country" value="{{ old('country', $user->country) }}" id="country" class="form-control">
+                        <input type="text" name="country" id="country" value="Germany" readonly class="form-control">
                       </div>
+
                       <div class="form-group">
-                        <label for="address">Address</label>
-                        <textarea name="address" id="address" rows="2" class="form-control">{{ old('address', $user->address) }}</textarea>                      </div>
+                        <label for="state">State</label>
+                        <input type="text" name="state" value="{{ old('state', $user->state) }}" id="state" class="form-control">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" name="city" value="{{ old('city', $user->city) }}" id="city" class="form-control">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="favorites">Favorites</label>
+                        <textarea name="favorites" id="favorites" rows="3" class="form-control">{{ old('favorites', $user->favorites) }}</textarea>                      </div>
                     </div>
+
                     <div class="offset-md-1 col-md-3">
-                      <div class="form-group">
-                        <label for="bio">Profile picture</label>
-                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                          <div class="fileinput-new img-thumbnail" style="width: 150px; height: 150px;">
-                            <img src="{{ $user->profilePictureUrl() }}" alt="...">                          </div>
-                          <div class="fileinput-preview fileinput-exists img-thumbnail"
-                            style="max-width: 150px; max-height: 150px;"></div>
-                          <div class="mt-2">
-                            <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select
-                                image</span><span class="fileinput-exists">Change</span><input type="file"
-                                name="profile_picture" accept="image/*"></span>
-                            <a href="#" class="btn btn-outline-secondary fileinput-exists"
-                              data-dismiss="fileinput">Remove</a>
+                        <div class="form-group">
+                          <label for="bio">Profile picture</label>
+                          <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new img-thumbnail" style="width: 150px; height: 150px;">
+                              <img src="{{ $user->profilePictureUrl() }}" alt="..." style="width: 150px; height: 150px;">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists img-thumbnail"
+                              style="max-width: 150px; max-height: 150px;"></div>
+                            <div class="mt-2">
+                              <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select
+                                  image</span><span class="fileinput-exists">Change</span><input type="file"
+                                  name="profile_picture" accept="image/*"></span>
+                              <a href="#" class="btn btn-outline-secondary fileinput-exists"
+                                data-dismiss="fileinput">Remove</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="row">
+                          <div class="col-md-offset-3 col-md-6">
+                            <button type="submit" class="btn btn-success">Update Profile</button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-footer">
-                  <div class="row">
-                    <div class="col-md-8">
-                      <div class="row">
-                        <div class="col-md-offset-3 col-md-6">
-                          <button type="submit" class="btn btn-success">Update Profile</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
-@endsection
+    </main>
+  @endsection
 
 @push('styles')
 <link href="{{ asset('css/jasny-bootstrap.min.css') }}" rel="stylesheet">
