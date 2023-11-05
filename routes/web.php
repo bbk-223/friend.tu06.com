@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,10 @@ use App\Http\Controllers\CustomAuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('main');
+Route::get('/', [MainController::class, 'main'])->name('main');
+Route::post('search/', [MainController::class, 'search'])->name('search');
 
-Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
 Route::get('/settings/profile-information', [CustomAuthController::class, 'editProfile'])->name('user-profile-information.edit');
 Route::get('/settings/password', [CustomAuthController::class, 'changePassword'])->name('user-password.edit');
+

@@ -12,7 +12,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(29)->sequence(
+            ['gender' => 'male','age' => '24','relationship'=>'single'],
+            ['gender' => 'female','age' => '33','relationship'=>'married'],
+            ['gender' => 'male','age' => '42','relationship'=>'divorced'],
+            )->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

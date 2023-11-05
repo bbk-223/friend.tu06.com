@@ -55,7 +55,7 @@ class User extends Authenticatable
     public function profilePictureUrl()
     {
         return $this->profile_picture && Storage::exists($this->profile_picture) ?
-            Storage::url($this->profile_picture) :
+        str_replace('http://localhost/','http://localhost:8000/',Storage::url(User::find(1)->profile_picture)) :
             "https://via.placeholder.com/150x150";
     }
 }
