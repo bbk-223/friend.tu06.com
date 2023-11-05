@@ -14,4 +14,7 @@ class CustomAuthController extends Controller
             'user' => $request->user()
         ]);
     }
+    function changePassword() {
+        return view('auth.password.change-password');
+    }
 }

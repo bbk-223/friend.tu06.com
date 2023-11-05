@@ -22,3 +22,4 @@ Route::get('/', function () {
 
 Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
 Route::get('/settings/profile-information', [CustomAuthController::class, 'editProfile'])->name('user-profile-information.edit');
+Route::get('/settings/password', [CustomAuthController::class, 'changePassword'])->name('user-password.edit');
