@@ -19,6 +19,7 @@ use App\Http\Controllers\MainController;
 
 Route::get('/', [MainController::class, 'main'])->name('main');
 Route::post('search/', [MainController::class, 'search'])->name('search');
+Route::get('/profile/{id}', [MainController::class, 'profile']);
 
 Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
 Route::get('/settings/profile-information', [CustomAuthController::class, 'editProfile'])->name('user-profile-information.edit');

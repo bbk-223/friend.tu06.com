@@ -20,4 +20,10 @@ class MainController extends Controller
         }
         return view('searching', compact('users'));
     }
+
+    function profile($id){
+        $user = User::findOrFail($id);
+        $users = User::paginate(12);
+        return view('profile', ['users' => $users, 'user' => $user]);
+    }
 }

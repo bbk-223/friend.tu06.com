@@ -24,7 +24,7 @@
                         <a class="user-dropdown dropdown-toggle" href="#">{{ auth()->user()->name }}</a>
                         <ul class="ul-2">
                         <li><a class="" href="{{ route('user-profile-information.edit') }}">Edit Profile</a></li>
-                        <li><a class="" href="#">Change Password</a></li>
+                        <li><a class="" href="{{ route('user-password.edit') }}">Change Password</a></li>
                         <li><hr class="hr"></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
