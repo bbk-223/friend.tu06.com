@@ -56,6 +56,20 @@ class User extends Authenticatable
     {
         return $this->profile_picture && Storage::exists($this->profile_picture) ?
         str_replace('http://localhost/','http://localhost:8000/',Storage::url(User::find(1)->profile_picture)) :
-            "https://via.placeholder.com/150x150";
+            "https://source.unsplash.com/500x500?face-" . rand(1, 1000);
+    }
+
+    public function conversations()
+    {
+        
+        return $this->hasMany(Conversation::class,'sender_id')->orWhere('receiver_id',$this->id)->whereNotDeleted();
+    }
+
+    /**
+     * The channels the user receives notification broadcasts on.
+     */
+    public function receivesBroadcastNotificationsOn(): string
+    {
+        return 'users.'.$this->id;
     }
 }
