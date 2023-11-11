@@ -11,7 +11,7 @@ class ChatBox extends Component
     public $body;
     public $loadedMessages;
 
-    public $paginate_var=10;
+    public $paginate_var=100;
 
     protected $listeners=[
         'loadMore'
