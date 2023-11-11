@@ -12,7 +12,7 @@
 <body>
     <nav class="site-nav">
         <div class="site-col-6">
-            <img src="{{asset('icon/logo.png')}}" alt="Tu06.com">
+            <a href="/"><img src="{{asset('icon/logo.png')}}" alt="Tu06.com"></a>
             <ul class="ul-1">
                 <li><a href="{{ route('main') }}">Freunde finden</a></li>
                 @guest

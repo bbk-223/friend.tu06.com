@@ -34,6 +34,10 @@ body{
     border-radius: 10%;
 }
 
+.site-nav-2{
+    margin: 0 auto;
+}
+
 .site-nav .hamburger-icon{
     display: none;
     float: right;
