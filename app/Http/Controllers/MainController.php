@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Conversation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
     function main() {
         $users = User::paginate(12);
-        return view('home', compact('users'));
+        return view('home',[
+            'users'=>$users,
+            'conversations'=>auth()->user()->conversations()->latest('updated_at')->get(),
+        ]);
     }
 
     function search() {
@@ -18,12 +23,16 @@ class MainController extends Controller
         }else{
             $users = User::where('gender', request()->gender)->where('age', '>', request()->age1)->where('age', '<', request()->age2)->paginate(12);
         }
-        return view('searching', compact('users'));
+        return view('searching', [
+            'users'=>$users,
+            'conversations'=>auth()->user()->conversations()->latest('updated_at')->get(),
+        ]
+    );
     }
 
     function profile($id){
         $user = User::findOrFail($id);
         $users = User::paginate(12);
-        return view('profile', ['users' => $users, 'user' => $user]);
+        return view('profile', ['users' => $users, 'user' => $user, 'conversations' => auth()->user()->conversations()->latest('updated_at')->get()]);
     }
 }

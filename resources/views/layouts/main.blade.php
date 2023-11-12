@@ -10,30 +10,53 @@
     @stack('styles')
 </head>
 <body>
+    @php
+        $count = 0;
+    @endphp
     <nav class="site-nav">
         <div class="site-col-6">
             <a href="/"><img src="{{asset('icon/logo.png')}}" alt="Tu06.com"></a>
             <ul class="ul-1">
-                <li><a href="{{ route('main') }}">Freunde finden</a></li>
-                @guest
-                    <li><a href="{{ route('login') }}">Anmelden</a></li>
-                    <li>Neuer Nutzer? Starte <a href="{{ route('register') }}">hier</a></li>
-                @endguest
                 @auth
                     <li>
-                        <a class="user-dropdown dropdown-toggle" href="#">{{ auth()->user()->name }}</a>
-                        <ul class="ul-2">
-                        <li><a class="" href="{{ route('user-profile-information.edit') }}">Edit Profile</a></li>
-                        <li><a class="" href="{{ route('user-password.edit') }}">Change Password</a></li>
-                        <li><hr class="hr"></li>
-                        <li>
+                        <a class="border-bottom border-black" href="{{ route('chat.index') }}">
+                        @foreach ($conversations as $conversation)
+                        {{-- unread count --}}
+                        @if ($conversation->unreadMessagesCount()>0)
+                            @php
+                                $count += 1;
+                            @endphp
+                        @endif
+                        @endforeach
+                        <span class="messages">
+                            @php
+                                echo $count;
+                            @endphp
+                        </span> Nachrichten
+                        </a>
+                    </li>
+                @endauth
+                <li><a class="border-bottom border-black"href="{{ route('main') }}">Freunde finden</a></li>
+                @guest
+                    <li><a class="border-bottom border-black" href="{{ route('login') }}">Anmelden</a></li>
+                    <li class="border-bottom border-black">Neuer Nutzer? Starte <a href="{{ route('register') }}">hier</a></li>
+                @endguest
+                @auth
+                <li class="nav-item dropdown float-right">
+                    <a class="d-inline border-bottom border-black nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ auth()->user()->name }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('user-profile-information.edit') }}">Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="{{ route('user-password.edit') }}">Change Password</a></li>
+                        <li><hr class="dropdown-divider"></li>                            <li>
                             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                 @csrf
-                                <button class="dropdown-item logout-button">Logout</button>
+                                <button class="dropdown-item">Logout</button>
                                 </form>
                         </li>
-                        </ul>
-                    </li>              
+                    </ul>
+                  </li>             
                 @endauth
             </ul>
             <img class="hamburger-icon" src="{{asset('icon/hamburger.png')}}" alt="">

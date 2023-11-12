@@ -26,6 +26,10 @@ body{
 
 /* Navigation CSS */
 
+.messages{
+    color: white;
+}
+
 .site-nav{
     width: 98%;
     margin: 10px auto 0px auto;
@@ -36,6 +40,10 @@ body{
 
 .site-nav-2{
     margin: 0 auto;
+}
+
+.ul-1{
+    margin-right: 40px;
 }
 
 .site-nav .hamburger-icon{
@@ -84,7 +92,7 @@ body{
 
 .site-nav .ul-1 .ul-2{
     position: relative;
-    left: .6rem;
+    left: 7.4rem;
     top: .02rem;
     width: 190px;
 }

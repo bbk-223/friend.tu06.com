@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', '{{ $user->name }} Profile')
+@section('title', $user->name . "Profile")
 
 @section('content')
     

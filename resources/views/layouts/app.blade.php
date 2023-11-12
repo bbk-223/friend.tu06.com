@@ -15,14 +15,14 @@
         <div class="site-col-6">
             <a href="/"><img style="display: inline" src="{{asset('icon/logo.png')}}" alt="Tu06.com"></a>
             <ul class="ul-1">
-                <li><a href="{{ route('main') }}">Freunde finden</a></li>
+                <li class="border-bottom border-black"><a href="{{ route('main') }}">Freunde finden</a></li>
                 @guest
-                    <li><a href="{{ route('login') }}">Anmelden</a></li>
-                    <li>Neuer Nutzer? Starte <a href="{{ route('register') }}">hier</a></li>
+                    <li class="border-bottom border-black"><a href="{{ route('login') }}">Anmelden</a></li>
+                    <li class="border-bottom border-black">Neuer Nutzer? Starte <a href="{{ route('register') }}">hier</a></li>
                 @endguest
                 @auth 
                     <li class="nav-item dropdown float-right">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="border-bottom border-black nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu">
