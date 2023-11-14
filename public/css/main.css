@@ -46,6 +46,11 @@ body{
     margin-right: 40px;
 }
 
+.background-img{
+    background-image: url("../pictures/couple.jpg");
+    background-size: 100%;
+}
+
 .site-nav .hamburger-icon{
     display: none;
     float: right;

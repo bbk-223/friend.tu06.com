@@ -7,8 +7,14 @@ use Illuminate\Http\Request;
 
 class CustomAuthController extends Controller
 {
-    function dashboard() {
-        return view('auth.dashboard',[ 'conversations' => auth()->user()->conversations()->latest('updated_at')->get()]);
+    function dashboard(Request $request) {
+        $request->session()->flash('welcome','Sie haben sich erfolgreich angemeldet.');
+        $users = User::paginate(12);
+
+        return view('home',[
+            'users'=>$users,
+            'conversations' => auth()->user()->conversations()->latest('updated_at')->get()
+        ]);
     }
     function editProfile(Request $request) {
         return view('auth.edit-profile', [

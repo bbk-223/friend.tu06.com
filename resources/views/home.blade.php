@@ -3,10 +3,26 @@
 @section('title', 'Freunde finden Website')
 @section('content')
     <section>
-        <div class="container">
-            <div class="row mt-2">
-                <div class="col-md-4 mt-4">
-                    <form action="{{ route('search') }}" method="POST">
+        <div class="container mt-2 mb-2">
+            @if (session('welcome'))
+                <div class="text-center alert alert-success">{{ session('welcome') }}</div>
+            @endif
+        </div>
+
+        <div class="container mt-2 mb-2">
+
+            <div class="card">
+                <div class="card-header card-title bg-success text-center h4">
+                    <strong>به سایت دوست یابی ایرانیان مقیم آلمان خوش آمدید</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container background-img">
+            <div class="row">
+                <div class="col-md-4 mt-5 mb-5">
+                    <form style="margin-left: 10px" action="{{ route('search') }}" method="POST">
                         @csrf
                         <div class="card">
                             <div class="card-header card-title bg-danger">
@@ -15,9 +31,6 @@
                             <div class="card-body bg-light">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        @if (session('status') === 'profile-information-updated')
-                                            <div class="alert alert-success">Profile has been updated.</div>
-                                        @endif
                                         <div class="form-group mt-1 text-info">
                                             <label for="gender">Geschlecht</label>
                                             <select class="form-select" id="gender" name="gender" aria-label="Default select example">
@@ -57,16 +70,12 @@
                         </div>  
                     </form>
                 </div>
-                <div class="col-md-8 float-right">
-                    <img src="{{asset('pictures/couple.jpg')}}" class="love-img" alt="">
-                </div>
+
 
             </div>
     </section>
     <section>
         <div class="container">
-            <div class="row">
-
                 <div class="card mt-2">
                     <div class="card-header card-title bg-success">
                         <strong>Personen</strong>
@@ -90,7 +99,6 @@
                     </article>
                 </div>
 
-            </div>
         </div>
     </section>
 @endsection
