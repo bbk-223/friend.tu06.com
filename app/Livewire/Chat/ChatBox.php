@@ -3,7 +3,6 @@
 namespace App\Livewire\Chat;
 
 use App\Models\Message;
-use App\Notifications\MessageSent;
 use Livewire\Component;
 
 class ChatBox extends Component
@@ -19,51 +18,8 @@ class ChatBox extends Component
     ];
 
 
-    public function getListeners()  {
-
-        $auth_id= auth()->user()->id;
-
-        return [
-
-            'loadMore',
-            "echo-private:users.{$auth_id},.Illuminate\\Notifications\\Events\\BroadcastNotificationCreated"=>'broadcastedNotifications'
-
-        ];
-        
-    }
-
-    public function broadcastedNotifications($event)  {
-        
-
-        if($event['type']== MessageSent::class){
-
-            if ($event['conversation_id']==$this->selectedConversation->id) {
-
-                // $this->dispatchBrowserEvent('scroll-bottom');
-                $this->dispatch('scroll-bottom');
-
-
-
-                $newMessage= Message::find($event['message_id']);
-
-
-                #push message
-                $this->loadedMessages->push($newMessage);
-
-
-            }
-
-
-
-        }
-
-    }
-
-
-
 
    public function loadMore() : void {
-
 
         #increment 
         $this->paginate_var += 10;
@@ -76,7 +32,6 @@ class ChatBox extends Component
         #update the chat height 
         // $this->dispatchBrowserEvent('update-chat-height');
         $this->dispatch('update-chat-height');
-
         
 
         
@@ -117,9 +72,9 @@ class ChatBox extends Component
         $this->reset('body');
 
         #scroll to bottom
+
         // $this->dispatchBrowserEvent('scroll-bottom');
         $this->dispatch('scroll-bottom');
-
 
 
         #push the message
@@ -134,21 +89,6 @@ class ChatBox extends Component
         #refresh chatlist
         // $this->emitTo('chat.chat-list','refresh');
         $this->dispatch('refresh');
-
-
-
-
-        #broadcast
-
-        $this->selectedConversation->getReceiver()
-                ->notify(new MessageSent(
-                    Auth()->User(),
-                    $createdMessage,
-                    $this->selectedConversation,
-                    $this->selectedConversation->getReceiver()->id
-
-                    
-                ) );
 
 
 
