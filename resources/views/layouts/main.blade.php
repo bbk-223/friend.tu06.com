@@ -39,7 +39,7 @@
                 <li><a class="border-bottom border-black"href="{{ route('main') }}">Freunde finden</a></li>
                 @guest
                     <li><a class="border-bottom border-black" href="{{ route('login') }}">Anmelden</a></li>
-                    <li class="border-bottom border-black">Neuer Nutzer? Starte <a href="{{ route('register') }}">hier</a></li>
+                    <li class="border-bottom border-black">Neuer Benutzer? Starte <a href="{{ route('register') }}">hier</a></li>
                 @endguest
                 @auth
                 <li class="nav-item dropdown float-right">
@@ -47,12 +47,12 @@
                         {{ auth()->user()->name }}
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('user-profile-information.edit') }}">Edit Profile</a></li>
-                        <li><a class="dropdown-item" href="{{ route('user-password.edit') }}">Change Password</a></li>
+                        <li><a class="dropdown-item" href="{{ route('user-profile-information.edit') }}">Profil bearbeiten</a></li>
+                        <li><a class="dropdown-item" href="{{ route('user-password.edit') }}">Passwort ändern</a></li>
                         <li><hr class="dropdown-divider"></li>                            <li>
                             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                 @csrf
-                                <button class="dropdown-item">Logout</button>
+                                <button class="dropdown-item">Ausloggen</button>
                                 </form>
                         </li>
                     </ul>
@@ -64,20 +64,20 @@
                 <ul class="ul-2">
                     <li><a href="{{ route('main') }}">Freunde finden</a></li>
                     <li><a href="{{ route('login') }}">Einloggen</a></li>
-                    <li><a href="{{ route('register') }}">Registerierung</a></li>
+                    <li><a href="{{ route('register') }}">Registrierung</a></li>
                 </ul>
             @endguest
 
             @auth
                 <ul class="ul-2">
                         <li><a class="user-dropdown dropdown-toggle" href="#">{{ auth()->user()->name }}</a></li>
-                        <li><a class="" href="{{ route('user-profile-information.edit') }}">Edit Profile</a></li>
-                        <li><a class="" href="#">Change Password</a></li>
+                        <li><a class="" href="{{ route('user-profile-information.edit') }}">Profil bearbeiten</a></li>
+                        <li><a class="" href="#">Passwort ändern</a></li>
                         <li><hr class="hr"></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                 @csrf
-                                <button class="dropdown-item logout-button">Logout</button>
+                                <button class="dropdown-item logout-button">Ausloggen</button>
                                 </form>
                         </li>
                 </ul>              

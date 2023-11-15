@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
-@section('title', 'Reset Password')
+@section('title', 'Passwort zurücksetzen')
 
 @section('content')
 <div class="auth-wrapper d-flex bg-light">
     <div class="col-md-4 m-auto">
         <div class="bg-white shadow-sm">
-            <h1 class="border-bottom p-4">Reset Password</h1>
+            <h1 class="border-bottom p-4">Passwort zurücksetzen</h1>
 
             <div class="px-4 py-4">
 
@@ -24,7 +24,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-block btn-primary">Send Password reset link</button>
+                        <button type="submit" class="btn btn-block btn-primary">Link zum Zurücksetzen des Passworts senden</button>
                     </div>
                 </form>
             </div>

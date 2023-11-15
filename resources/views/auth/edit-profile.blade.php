@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Edit Profile Information')
+@section('title', 'Profilinformationen bearbeiten')
 
 @section('content')
 <main class="py-5">
@@ -13,13 +13,13 @@
                 @method('PUT')
               <div class="card">
                 <div class="card-header card-title">
-                  <strong>Edit Profile</strong>
+                  <strong>Profil bearbeiten</strong>
                 </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-8">
                         @if (session('status') === 'profile-information-updated')
-                            <div class="alert alert-success">Profile has been updated.</div>
+                            <div class="alert alert-success">Profil wurde aktualisiert.</div>
                         @endif
                       <div class="form-group">
                         <label for="name">Name</label>
@@ -37,15 +37,15 @@
                       </div>
 
                       <div class="form-group mt-1">
-                        <label for="gender">Gender</label>
+                        <label for="gender">Geschlecht</label>
                         <select class="form-select" id="gender" name="gender" aria-label="Default select example">
-                            <option {{ $user->gender == 'male' ? 'selected' : '' }} value="male">Male</option>
-                            <option {{ $user->gender == 'female' ? 'selected' : '' }} value="female">Female</option>
+                            <option {{ $user->gender == 'männlich' ? 'selected' : '' }} value="männlich">männlich</option>
+                            <option {{ $user->gender == 'weiblich' ? 'selected' : '' }} value="weiblich">weiblich</option>
                         </select>
                       </div>
 
                       <div class="form-group mt-1">
-                        <label for="age">Age</label>
+                        <label for="age">Alter</label>
                         <select class="form-select" id="age" name="age" aria-label="Default select example">
                             @for ($i = 18; $i < 90; $i++)
                             <option {{ $user->age == "$i" ? 'selected' : '' }} value="{{$i}}">{{$i}}</option>
@@ -54,37 +54,37 @@
                       </div>
 
                       <div class="form-group mt-1">
-                        <label for="relationship">Relationship</label>
+                        <label for="relationship">Beziehung</label>
                         <select class="form-select" id="relationship" name="relationship" aria-label="Default select example">
                             <option {{ $user->relationship == 'single' ? 'selected' : '' }} value="single">Single</option>
-                            <option {{ $user->relationship == 'married' ? 'selected' : '' }} value="married">Married</option>
-                            <option {{ $user->relationship == 'divorced' ? 'selected' : '' }} value="divorced">Divorced</option>
+                            <option {{ $user->relationship == 'verheiratet' ? 'selected' : '' }} value="verheiratet">Verheiratet</option>
+                            <option {{ $user->relationship == 'geschieden' ? 'selected' : '' }} value="geschieden">Geschieden</option>
                         </select>
                       </div>
 
                       <div class="form-group">
-                        <label for="country">Country</label>
-                        <input type="text" name="country" id="country" value="Germany" readonly class="form-control">
+                        <label for="country">Land</label>
+                        <input type="text" name="country" id="country" value="Deutschland" readonly class="form-control">
                       </div>
 
                       <div class="form-group">
-                        <label for="state">State</label>
+                        <label for="state">Bundesland</label>
                         <input type="text" name="state" value="{{ old('state', $user->state) }}" id="state" class="form-control">
                       </div>
 
                       <div class="form-group">
-                        <label for="city">City</label>
+                        <label for="city">Stadt</label>
                         <input type="text" name="city" value="{{ old('city', $user->city) }}" id="city" class="form-control">
                       </div>
 
                       <div class="form-group">
-                        <label for="favorites">Favorites</label>
+                        <label for="favorites">Hobbys</label>
                         <textarea name="favorites" id="favorites" rows="3" class="form-control">{{ old('favorites', $user->favorites) }}</textarea>                      </div>
                     </div>
 
                     <div class="offset-md-1 col-md-3">
                         <div class="form-group">
-                          <label for="bio">Profile picture</label>
+                          <label for="bio">Profilbild</label>
                           <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-new img-thumbnail" style="width: 150px; height: 150px;">
                               <img src="{{ $user->profilePictureUrl() }}" alt="..." style="width: 150px; height: 150px;">
@@ -92,11 +92,11 @@
                             <div class="fileinput-preview fileinput-exists img-thumbnail"
                               style="max-width: 150px; max-height: 150px;"></div>
                             <div class="mt-2">
-                              <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select
-                                  image</span><span class="fileinput-exists">Change</span><input type="file"
+                              <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Bild auswählen
+                                </span><span class="fileinput-exists">Ändern</span><input type="file"
                                   name="profile_picture" accept="image/*"></span>
                               <a href="#" class="btn btn-outline-secondary fileinput-exists"
-                                data-dismiss="fileinput">Remove</a>
+                                data-dismiss="fileinput">Entfernen</a>
                             </div>
                           </div>
                         </div>
@@ -108,7 +108,7 @@
                       <div class="col-md-8">
                         <div class="row">
                           <div class="col-md-offset-3 col-md-6">
-                            <button type="submit" class="btn btn-success">Update Profile</button>
+                            <button type="submit" class="btn btn-success">Profil aktualisieren</button>
                           </div>
                         </div>
                       </div>
