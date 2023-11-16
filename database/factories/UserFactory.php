@@ -20,7 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'age' => fake()->numberBetween(18,65),
+            'birth' => fake()->dateTimeBetween('-65 years','-18 years'),
             'country' => 'Deutschland',
             'state' => fake()->city(),
             'city' => fake()->city(),
