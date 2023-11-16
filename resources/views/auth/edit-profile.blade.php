@@ -46,12 +46,11 @@
                       </div>
 
                       <div class="form-group mt-1">
-                        <label for="age">Alter</label>
-                        <select class="form-select" id="age" name="age" aria-label="Default select example">
-                            @for ($i = 18; $i < 90; $i++)
-                            <option {{ $user->age == "$i" ? 'selected' : '' }} value="{{$i}}">{{$i}}</option>
-                            @endfor
-                        </select>
+                        <label for="birth">Geburtsdatum</label>
+                        <input type="date" name="birth" value="{{ old('birth', $user->birth) }}" id="birth" class="form-control @error('email') is-invalid @enderror">
+                        @error('birth')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                       </div>
 
                       <div class="form-group mt-1">
