@@ -9,7 +9,8 @@
         @include('auth._sidenav')
 
         <div class="col-md-9">
-            <form action="{{ route('user-profile-information.update') }}" method="POST" enctype="multipart/form-data">                @csrf
+            <form action="{{ route('user-profile-information.update') }}" method="POST" enctype="multipart/form-data">                
+                @csrf
                 @method('PUT')
               <div class="card">
                 <div class="card-header card-title">
@@ -75,6 +76,28 @@
                       <div class="form-group">
                         <label for="city">Stadt</label>
                         <input type="text" name="city" value="{{ old('city', $user->city) }}" id="city" class="form-control">
+                      </div>
+
+                      <div class="form-group mt-1">
+                        <label for="">Ich suche nach (Alter)</label>
+                        <div class="row want-age">
+                        von
+                        <div class="col-md-4">
+                        <select class="form-select" id="start_want_age" name="start_want_age" aria-label="Default select example">
+                            @for ($i = 18; $i < 90; $i++)
+                            <option {{ $user->start_want_age == "$i" ? 'selected' : '' }} value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
+                        </div>
+                        bis
+                        <div class="col-md-4">
+                        <select class="form-select" id="end_want_age" name="end_want_age" aria-label="Default select example">
+                            @for ($i = 18; $i < 90; $i++)
+                            <option {{ $user->end_want_age == "$i" ? 'selected' : '' }} value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
+                        </div>
+                      </div>
                       </div>
 
                       <div class="form-group">

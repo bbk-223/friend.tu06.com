@@ -28,6 +28,8 @@ class User extends Authenticatable
         'country',
         'state',
         'city',
+        'start_want_age',
+        'end_want_age',
         'favorites',
         'profile_picture'
     ];
@@ -55,7 +57,7 @@ class User extends Authenticatable
     public function profilePictureUrl()
     {
         return $this->profile_picture && Storage::exists($this->profile_picture) ?
-        str_replace('http://localhost/','http://localhost:8000/',Storage::url(User::find(1)->profile_picture)) :
+        str_replace('http://localhost/','http://localhost:8000/',Storage::url(User::find($this->id)->profile_picture)) :
             "https://source.unsplash.com/500x500?face-" . rand(1, 1000);
     }
 

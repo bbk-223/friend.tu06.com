@@ -20,7 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'country' => 'germany',
+            'country' => 'Deutschland',
             'state' => fake()->city(),
             'city' => fake()->city(),
             'favorites' => fake()->text(),

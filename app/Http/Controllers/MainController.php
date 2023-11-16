@@ -20,6 +20,8 @@ class MainController extends Controller
     function search() {
         if(request()->city != ''){
             $users = User::where('gender', request()->gender)->where('age', '>', request()->age1)->where('age', '<', request()->age2)->where('city', '=', request()->city)->paginate(12);
+        }elseif(!isset(request()->age1)){
+            $users = User::paginate(12);
         }else{
             $users = User::where('gender', request()->gender)->where('age', '>', request()->age1)->where('age', '<', request()->age2)->paginate(12);
         }

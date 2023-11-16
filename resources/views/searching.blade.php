@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row mt-2">
                 <div class="col-md-12 mt-4">
-                    <form action="{{ route('search') }}" method="POST">
+                    <form action="{{ route('searching') }}" method="POST">
                         @csrf
                         <div class="card">
                             <div class="card-header card-title bg-danger">

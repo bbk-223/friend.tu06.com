@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('country')->after('relationship')->nullable();
             $table->string('state')->after('country')->nullable();
             $table->string('city')->after('state')->nullable();
-            $table->text('favorites')->after('city')->nullable();
+            $table->integer('start_want_age')->after('city')->nullable();
+            $table->integer('end_want_age')->after('start_want_age')->nullable();
+            $table->text('favorites')->after('end_want_age')->nullable();
+            $table->string('profile_picture')->after('favorites')->nullable();
         });
     }
 

@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         \App\Models\User::factory(29)->sequence(
-            ['gender' => 'male','age' => '24','relationship'=>'single'],
-            ['gender' => 'female','age' => '33','relationship'=>'married'],
-            ['gender' => 'male','age' => '42','relationship'=>'divorced'],
+            ['gender' => 'männlich','age' => '24','relationship'=>'single'],
+            ['gender' => 'weiblich','age' => '33','relationship'=>'verheiratet'],
+            ['gender' => 'männlich','age' => '42','relationship'=>'geschieden'],
             )->create();
 
         // \App\Models\User::factory()->create([

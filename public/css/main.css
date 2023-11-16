@@ -51,6 +51,18 @@ body{
     background-size: 100%;
 }
 
+.direction{
+    direction: rtl;
+}
+.direction>a{
+    color: violet;
+}
+
+.want-age{
+    position: relative;
+    left: 12px;
+}
+
 .site-nav .hamburger-icon{
     display: none;
     float: right;

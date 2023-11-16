@@ -66,6 +66,84 @@
     <section>
         {{ $slot }}
     </section>
+
+
+
+    <section class="mt-5">
+        <!-- Footer -->
+        <footer class="bg-secondary text-white">
+          <!-- Grid container -->
+          <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-lg-6 col-md-12 mb-4 mb-md-0 text-center">
+                <h5 class="text-info">Friend.Tu06.com</h5>
+      
+                <p class="direction">
+                  سایت ایرانی آلمانی زبان <a href="https://www.tu06.com">www.tu06.com</a> با هدف یافتن دوست ایرانی برای ایرانیان مقیم آلمان فعالیت خود را شروع کرده است.
+                </p>
+              </div>
+              <!--Grid column-->
+      
+              <!--Grid column-->
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Links</h5>
+      
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="/" class="text-white">Fruende finden</a>
+                  </li>
+                  <li>
+                    <a href="/chat" class="text-white">Nachrichten</a>
+                  </li>
+                  <li>
+                    <a href="/search" class="text-white">Suchen</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Kontaktiere uns</a>
+                  </li>
+                </ul>
+              </div>
+              <!--Grid column-->
+      
+              <!--Grid column-->
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-0">Links</h5>
+      
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="/login" class="text-white">Anmelden</a>
+                  </li>
+                  <li>
+                    <a href="/register" class="text-white">Registrieren</a>
+                  </li>
+                  <li>
+                    <a href="/settings/profile-information" class="text-white">Profil bearbeiten</a>
+                  </li>
+                  <li>
+                    <a href="https://www.tu06.com" class="text-white">www.Tu06.com</a>
+                  </li>
+                </ul>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+          </div>
+          <!-- Grid container -->
+      
+          <!-- Copyright -->
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-white" href="https://friend.tu06.com/">Friend.Tu06.com</a>
+          </div>
+          <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+      </section>
+
+
+
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

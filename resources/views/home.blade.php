@@ -22,7 +22,7 @@
         <div class="container background-img">
             <div class="row">
                 <div class="col-md-4 mt-5 mb-5">
-                    <form style="margin-left: 10px" action="{{ route('search') }}" method="POST">
+                    <form style="margin-left: 10px" action="{{ route('searching') }}" method="POST">
                         @csrf
                         <div class="card">
                             <div class="card-header card-title bg-danger">
@@ -30,7 +30,7 @@
                             </div>
                             <div class="card-body bg-light">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-11">
                                         <div class="form-group mt-1 text-info">
                                             <label for="gender">Geschlecht</label>
                                             <select class="form-select" id="gender" name="gender" aria-label="Default select example">

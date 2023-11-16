@@ -168,11 +168,13 @@
                                                 <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                               </svg>
                                         </span>
-
-                                        Profil anzeigen
-
+                                        <a href="{{ route('profile', $conversation->getReceiver()->id) }}}">Profil anzeigen</a>
+                                        
                                     </button>
-                                    <button class="items-center gap-3 flex w-full px-4 py-2 text-left text-sm leading-5 text-gray-500 hover:bg-gray-100 transition-all duration-150 ease-in-out focus:outline-none focus:bg-gray-100">
+                                    <button 
+                                    onclick="confirm('Are you sure?')||event.stopImmediatePropagation()" 
+                                    wire:click="deleteByUser('{{encrypt($conversation->id)}}')" 
+                                    class="items-center gap-3 flex w-full px-4 py-2 text-left text-sm leading-5 text-gray-500 hover:bg-gray-100 transition-all duration-150 ease-in-out focus:outline-none focus:bg-gray-100">
 
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">

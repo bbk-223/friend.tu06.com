@@ -34,6 +34,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'country' => ['nullable', 'string', 'max:255'],
             'state' => ['nullable', 'string', 'max:255'],
             'city' => ['nullable', 'string', 'max:255'],
+            'start_want_age' => ['nullable', 'integer', 'max:255'],
+            'end_want_age' => ['nullable', 'integer', 'max:255'],
             'favorites' => ['nullable', 'string', 'max:500'],
             'profile_picture' => ['nullable', 'image'],
         ])->validate();
@@ -59,6 +61,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'country' => $input['country'],
                 'state' => $input['state'],
                 'city' => $input['city'],
+                'start_want_age' => $input['start_want_age'],
+                'end_want_age' => $input['end_want_age'],
                 'favorites' => $input['favorites'],
                 'profile_picture' => $input['profile_picture'],
             ])->save();
@@ -97,6 +101,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'country' => $input['country'],
             'state' => $input['state'],
             'city' => $input['city'],
+            'start_want_age' => $input['start_want_age'],
+            'end_want_age' => $input['end_want_age'],
             'favorites' => $input['favorites'],
             'profile_picture' => $input['profile_picture'],
             'email_verified_at' => null,

@@ -21,14 +21,15 @@ use App\Http\Controllers\MessageController;
 */
 
 Route::get('/', [MainController::class, 'main'])->name('main');
-Route::post('search/', [MainController::class, 'search'])->name('search');
+Route::post('/searching', [MainController::class, 'search'])->name('searching');
+Route::get('/search', [MainController::class, 'search'])->name('search');
 Route::get('/profile/{id}', [MainController::class, 'profile'])->name('profile');
 
-Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
-Route::get('/settings/profile-information', [CustomAuthController::class, 'editProfile'])->name('user-profile-information.edit');
-Route::get('/settings/password', [CustomAuthController::class, 'changePassword'])->name('user-password.edit');
-
 Route::middleware('auth')->group(function (){
+
+    Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
+    Route::get('/settings/profile-information', [CustomAuthController::class, 'editProfile'])->name('user-profile-information.edit');
+    Route::get('/settings/password', [CustomAuthController::class, 'changePassword'])->name('user-password.edit');
 
     Route::get('/chat',Index::class)->name('chat.index');
     Route::get('/chat/{query}',Chat::class)->name('chat');
