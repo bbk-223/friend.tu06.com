@@ -44,7 +44,7 @@
                         </tr>
                         <tr class="table-primary">
                             <td>Alter</td>
-                            <td>{{ age($user->birth) }}</td>
+                            <td>{{ $user->age }}</td>
                         </tr>
                         <tr class="table-primary">
                             <td>Beziehung</td>
@@ -69,10 +69,9 @@
                         <tr class="table-primary">
                             <td>Ich suche nach</td>
                             @isset($user->start_want_age)
-                            <td>von {{ $user->start_want_age }} bis {{ $user->end_want_age }} Jahre alt</td>
-                            @else
-                            <td></td>
+                            <td>von {{ $user->start_want_age }} bis {{ $user->end_want_age }}</td>
                             @endisset
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -165,7 +164,7 @@
                                     <img class="person-img" src="{{ $user->profilePictureUrl() }}" alt="Profile Picture">
                                     <div class="mt-1 text-info">{{ $user->name }}</div>
                                 </a>
-                                <p class="text-secondary">({{ age($user->birth) }}, {{ $user->city }})</p>
+                                <p class="text-secondary">({{ $user->age }}, {{ $user->city }})</p>
                             </div>
                         @endforeach
                         </div>

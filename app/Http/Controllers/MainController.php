@@ -35,8 +35,6 @@ class MainController extends Controller
     function profile($id){
         $user = User::findOrFail($id);
         $users = User::paginate(12);
-
-
         return view('profile', ['users' => $users, 'user' => $user, 'conversations' => auth()?->user()?->conversations()->latest('updated_at')->get()]);
     }
 }

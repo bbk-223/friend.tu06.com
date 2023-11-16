@@ -83,7 +83,7 @@
                                     <img class="person-img" src="{{ $user->profilePictureUrl() }}" alt="Profile Picture">
                                     <div class="mt-1 text-info">{{ $user->name }}</div>
                                 </a>
-                                <p class="text-secondary">({{ age($user->birth) }}, {{ $user->city }})</p>
+                                <p class="text-secondary">({{ $user->age }}, {{ $user->city }})</p>
                             </div>
                         @endforeach
                         </div>
