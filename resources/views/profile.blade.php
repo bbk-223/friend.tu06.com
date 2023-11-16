@@ -103,8 +103,8 @@
                                         <div class="form-group mt-1 text-info">
                                             <label for="gender">Geschlecht</label>
                                             <select class="form-select" id="gender" name="gender" aria-label="Default select example">
-                                                <option value="male">männlich</option>
-                                                <option value="female">weiblich</option>
+                                                <option value="männlich">männlich</option>
+                                                <option value="weiblich">weiblich</option>
                                             </select>
                                         </div>
                                     </div>
