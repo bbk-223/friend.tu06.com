@@ -20,9 +20,12 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'age' => fake()->numberBetween(18,65),
             'country' => 'Deutschland',
             'state' => fake()->city(),
             'city' => fake()->city(),
+            'start_want_age' => fake()->numberBetween(18,35),
+            'end_want_age' => fake()->numberBetween(35,65),
             'favorites' => fake()->text(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
