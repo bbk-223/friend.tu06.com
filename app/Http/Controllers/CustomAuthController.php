@@ -9,7 +9,7 @@ class CustomAuthController extends Controller
 {
     function dashboard(Request $request) {
         $request->session()->flash('welcome','Sie haben sich erfolgreich angemeldet.');
-        $users = User::paginate(12);
+        $users = User::orderBy('id','DESC')->paginate(12);
 
         return view('home',[
             'users'=>$users,

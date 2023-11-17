@@ -8,82 +8,75 @@
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @stack('styles')
+
 </head>
 <body>
     @php
         $count = 0;
     @endphp
-    <nav class="site-nav">
-        <div class="site-col-6">
-            <a href="/"><img src="{{asset('icon/logo.png')}}" alt="Tu06.com"></a>
-            <ul class="ul-1">
-                @auth
-                    <li>
-                        <a class="border-bottom border-black" href="{{ route('chat.index') }}">
-                        @foreach ($conversations as $conversation)
-                        {{-- unread count --}}
-                        @if ($conversation->unreadMessagesCount()>0)
-                            @php
-                                $count += 1;
-                            @endphp
-                        @endif
-                        @endforeach
-                        <span class="messages">
-                            @php
-                                echo $count;
-                            @endphp
-                        </span> Nachrichten
-                        </a>
-                    </li>
-                @endauth
-                <li><a class="border-bottom border-black"href="{{ route('main') }}">Freunde finden</a></li>
-                @guest
-                    <li><a class="border-bottom border-black" href="{{ route('login') }}">Anmelden</a></li>
-                    <li class="border-bottom border-black">Neuer Benutzer? Starte <a href="{{ route('register') }}">hier</a></li>
-                @endguest
-                @auth
-                <li class="nav-item dropdown float-right">
-                    <a class="d-inline border-bottom border-black nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ auth()->user()->name }}
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('user-profile-information.edit') }}">Profil bearbeiten</a></li>
-                        <li><a class="dropdown-item" href="{{ route('user-password.edit') }}">Passwort ändern</a></li>
-                        <li><hr class="dropdown-divider"></li>                            <li>
-                            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                                @csrf
-                                <button class="dropdown-item">Ausloggen</button>
-                                </form>
-                        </li>
-                    </ul>
-                  </li>             
-                @endauth
-            </ul>
-            <img class="hamburger-icon" src="{{asset('icon/hamburger.png')}}" alt="">
-            @guest
-                <ul class="ul-2">
-                    <li><a href="{{ route('main') }}">Freunde finden</a></li>
-                    <li><a href="{{ route('login') }}">Einloggen</a></li>
-                    <li><a href="{{ route('register') }}">Registrierung</a></li>
-                </ul>
-            @endguest
 
-            @auth
-                <ul class="ul-2">
-                        <li><a class="user-dropdown dropdown-toggle" href="#">{{ auth()->user()->name }}</a></li>
-                        <li><a class="" href="{{ route('user-profile-information.edit') }}">Profil bearbeiten</a></li>
-                        <li><a class="" href="#">Passwort ändern</a></li>
-                        <li><hr class="hr"></li>
-                        <li>
-                            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                                @csrf
-                                <button class="dropdown-item logout-button">Ausloggen</button>
-                                </form>
-                        </li>
-                </ul>              
-            @endauth
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg p-0 nav-custom">
+  <div class="container-fluid bg-primary">
+  <a href="/"><img src="{{asset('icon/logo.png')}}" alt="Tu06.com"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        @auth
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle border-bottom border-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ auth()->user()->name }}
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('user-profile-information.edit') }}">Profil bearbeiten</a></li>
+                <li><a class="dropdown-item" href="{{ route('user-password.edit') }}">Passwort ändern</a></li>
+                <li><hr class="dropdown-divider"></li>                            <li>
+                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button class="dropdown-item">Ausloggen</button>
+                        </form>
+                </li>
+            </ul>
+          </li>             
+        @endauth
+        <li class="nav-item">
+          <a class="nav-link active border-bottom border-black text-info" aria-current="page" href="{{ route('main') }}">Freunde finden</a>
+        </li>
+        @guest
+          <li class="nav-item"><a class="nav-link border-bottom border-black text-info" href="{{ route('login') }}">Anmelden</a></li>
+          <li class="nav-item"><span class="nav-link border-bottom border-black">Neuer Benutzer? Starte <a class="text-info" href="{{ route('register') }}">hier</a></span></li>
+        @endguest
+
+        @auth
+        <li class="nav-item">
+            <a class="nav-link border-bottom border-black text-info" href="{{ route('chat.index') }}">
+            @foreach ($conversations as $conversation)
+            {{-- unread count --}}
+            @if ($conversation->unreadMessagesCount()>0)
+                @php
+                    $count += 1;
+                @endphp
+            @endif
+            @endforeach
+            <span class="messages">
+                @php
+                    echo $count;
+                @endphp
+            </span> Nachrichten
+            </a>
+        </li>
+        @endauth
+
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
     <section>
         @yield('content')
     </section>

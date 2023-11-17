@@ -56,9 +56,13 @@ class User extends Authenticatable
 
     public function profilePictureUrl()
     {
-        return $this->profile_picture && Storage::exists($this->profile_picture) ?
-        str_replace('http://localhost/','http://localhost:8000/',Storage::url(User::find($this->id)->profile_picture)) :
-            "https://source.unsplash.com/500x500?face-" . rand(1, 1000);
+        if($this->profile_picture && Storage::exists($this->profile_picture)){
+            return str_replace('http://localhost/','http://localhost:8000/',Storage::url(User::find($this->id)->profile_picture));
+        }elseif($this->profile_picture && $this->profile_picture == 'test'){
+            return "https://source.unsplash.com/500x500?face-" . rand(1, 1000);
+        }else{
+            return "https://via.placeholder.com/150x150";
+        }
     }
 
     public function conversations()

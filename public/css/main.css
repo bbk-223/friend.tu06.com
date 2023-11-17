@@ -24,26 +24,21 @@ body{
 
 /* End Auth CSS */
 
-/* Navigation CSS */
-
 .messages{
     color: white;
 }
 
-.site-nav{
+.nav-custom{
     width: 98%;
-    margin: 10px auto 0px auto;
-    background-color: #7dcafa;
-    height: 70px;
-    border-radius: 10%;
-}
+    margin: 7px auto 0px auto;
+  }
+.nav-custom img{
+    position: relative;
+    right: 12px;
+  }
 
 .site-nav-2{
     margin: 0 auto;
-}
-
-.ul-1{
-    margin-right: 40px;
 }
 
 .background-img{
@@ -62,96 +57,3 @@ body{
     position: relative;
     left: 12px;
 }
-
-.site-nav .hamburger-icon{
-    display: none;
-    float: right;
-    width: 40px;
-    margin-top: .8rem;
-    margin-right: .9rem;
-    border: solid black 2px;
-}
-
-.site-nav .ul-2 {
-    display: none;
-    list-style-type: none;
-
-    border: solid red 1px;
-    padding: 1rem;
-    background-color: black;
-}
-.site-nav .hamburger-icon~.ul-2{
-    position: relative;
-    right: 1rem;
-    top: .05rem;
-    float: right;
-    clear: both;
-    width: 190px;
-
-}
-.site-nav .ul-2 :nth-child(2), .site-nav .ul-2 :nth-child(3){
-    margin-top: .8rem;
-}
-.site-nav .ul-2 a{
-    color: white;
-}
-.site-nav .ul-1{
-    clear: both;
-    float: right;
-    margin-top: 25px;
-
-}
-.site-nav .ul-1 li{
-    display: inline;
-    margin-right: 15px;
-    font-size: 17px;
-}
-
-.site-nav .ul-1 .ul-2{
-    position: relative;
-    left: 7.4rem;
-    top: .02rem;
-    width: 190px;
-}
-
-.site-nav .ul-1 .ul-2 li{
-    display: block;
-    margin-right: 15px;
-    font-size: 17px;
-}
-
-.site-nav ul a{
-    text-decoration: none;
-}
-
-.user-dropdown:hover~.ul-2{
-    display: block;
-}
-.user-dropdown~.ul-2:hover{
-    display: block;
-}
-
-.hr{
-    color: red;
-}
-
-.logout-button{
-    color: white !important;
-}
-
-@media (max-width: 640px){
-    .site-nav .ul-1{
-        display: none;
-    }
-    .site-nav .hamburger-icon{
-        display: block;
-    }
-    .site-nav .hamburger-icon:hover~.ul-2{
-        display: block;
-    }
-    .site-nav .ul-2:hover{
-        display: block;
-    }
-}
-
-/* End Navigation CSS */
