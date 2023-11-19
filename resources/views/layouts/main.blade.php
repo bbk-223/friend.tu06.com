@@ -12,7 +12,7 @@
 </head>
 <body>
     @php
-        $count = 0;
+        $my_count = 0;
     @endphp
 
 <nav class="navbar navbar-expand-lg p-0 nav-custom">
@@ -51,17 +51,17 @@
         @auth
         <li class="nav-item">
             <a class="nav-link border-bottom border-black text-info" href="{{ route('chat.index') }}">
-            @foreach ($conversations as $conversation)
+            @foreach (auth()->user()->conversations()->latest('updated_at')->get() as $my_conversation)
             {{-- unread count --}}
-            @if ($conversation->unreadMessagesCount()>0)
+            @if ($my_conversation->unreadMessagesCount()>0)
                 @php
-                    $count += 1;
+                    $my_count += 1;
                 @endphp
             @endif
             @endforeach
             <span class="messages">
                 @php
-                    echo $count;
+                    echo $my_count;
                 @endphp
             </span> Nachrichten
             </a>
