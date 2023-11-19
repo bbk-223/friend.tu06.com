@@ -14,7 +14,6 @@ class MainController extends Controller
         $users = User::orderBy('id','DESC')->paginate(12);
         return view('home',[
             'users'=>$users,
-            'conversations'=>auth()?->user()?->conversations()->latest('updated_at')->get(),
         ]);
     }
 
@@ -35,7 +34,6 @@ class MainController extends Controller
         }
         return view('searching', [
             'users'=>$users,
-            'conversations'=>auth()?->user()?->conversations()->latest('updated_at')->get(),
         ]
     );
     }
@@ -45,6 +43,6 @@ class MainController extends Controller
         $users = User::orderBy('id','DESC')->paginate(12);
 
 
-        return view('profile', ['users' => $users, 'user' => $user, 'conversations' => auth()?->user()?->conversations()->latest('updated_at')->get()]);
+        return view('profile', ['users' => $users, 'user' => $user]);
     }
 }
