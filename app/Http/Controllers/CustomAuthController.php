@@ -13,16 +13,14 @@ class CustomAuthController extends Controller
 
         return view('home',[
             'users'=>$users,
-            'conversations' => auth()->user()->conversations()->latest('updated_at')->get()
         ]);
     }
     function editProfile(Request $request) {
         return view('auth.edit-profile', [
             'user' => $request->user(),
-            'conversations' => auth()->user()->conversations()->latest('updated_at')->get()
         ]);
     }
     function changePassword() {
-        return view('auth.password.change-password',['conversations' => auth()->user()->conversations()->latest('updated_at')->get()]);
+        return view('auth.password.change-password');
     }
 }
