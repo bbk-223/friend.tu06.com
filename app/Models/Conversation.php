@@ -24,7 +24,7 @@ class Conversation extends Model
     public function getReceiver()
     {
 
-        if ($this->sender_id === auth()->id()) {
+        if ($this->sender_id == auth()->id()) {
 
             return User::firstWhere('id',$this->receiver_id);
 
