@@ -5,7 +5,7 @@ namespace App\Livewire\Chat;
 use Livewire\Component;
 use App\Models\Conversation;
 
-class Chatlist extends Component
+class ChatList extends Component
 {
     public $selectedConversation;
     public $query;

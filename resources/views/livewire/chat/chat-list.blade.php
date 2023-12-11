@@ -126,13 +126,11 @@
                              <p class="grow truncate text-sm font-[100]">
                                {{$conversation->messages?->last()?->body??' '}}
                             </p>
-
                              {{-- unread count --}}
                              @if ($conversation->unreadMessagesCount()>0)
                              <span class="font-bold p-px px-2 text-xs shrink-0 rounded-full bg-blue-500 text-white">
-                                {{$conversation->unreadMessagesCount()}}
+                                {{ $conversation->unreadMessagesCount() }}
                              </span>
-                                 
                              @endif
 
 
@@ -203,6 +201,7 @@
                 </aside>
 
             </li>
+            
             @endforeach
 
             @else

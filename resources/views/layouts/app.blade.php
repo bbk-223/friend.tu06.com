@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
 </head>
 <body>
   @php
@@ -54,11 +55,11 @@
               {{-- unread count --}}
               @if ($my_conversation->unreadMessagesCount()>0)
                   @php
-                      $my_count += 1;
+                    $my_count += $my_conversation->unreadMessagesCount();
                   @endphp
               @endif
               @endforeach
-              <span class="messages">
+              <span id="messages-count" class="messages">
                   @php
                       echo $my_count;
                   @endphp
@@ -158,5 +159,18 @@
 
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    @auth
+      <script type='module'>
+        let my_count = {{ $my_count }}
+        Echo.channel('message-notification-channel')
+          .listen('MessageNotification', (e) => {
+            if(e.receiver_id == {{auth()->user()->id}}){
+              let messagesCount = document.getElementById('messages-count');
+              messagesCount.innerHTML = my_count++;
+            };
+          });
+          my_count+=1;
+      </script>
+    @endauth
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Chat;
 
+use App\Events\MessageNotification;
 use App\Mail\HavingNewMessage;
 use App\Models\Message;
 use Illuminate\Support\Facades\Mail;
@@ -91,7 +92,8 @@ class ChatBox extends Component
         #refresh chatlist
         // $this->emitTo('chat.chat-list','refresh');
         $this->dispatch('refresh');
-
+        $receiver_id = $this->selectedConversation->getReceiver()->id;
+        event(new MessageNotification($receiver_id));
         Mail::send(new HavingNewMessage($this->selectedConversation->getReceiver()->email,auth()->user()->name,$this->selectedConversation->getReceiver()->name));
 
 
