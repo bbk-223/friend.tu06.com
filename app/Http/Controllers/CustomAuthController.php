@@ -10,9 +10,12 @@ class CustomAuthController extends Controller
     function dashboard(Request $request) {
         $request->session()->flash('welcome','Sie haben sich erfolgreich angemeldet.');
         $users = User::orderBy('id','DESC')->paginate(12);
+        $js_users = User::paginate(16);
 
         return view('home',[
             'users'=>$users,
+            'js_users'=>$js_users
+
         ]);
     }
     function editProfile(Request $request) {

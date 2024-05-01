@@ -70,10 +70,24 @@
                         </div>  
                     </form>
                 </div>
+                <div class="col-md-8">
+                    <div class="row mt-3" id="js-zone">
+                        @foreach ($js_users as $js_user)
+                        <div style="display: @if($loop->index > 7) {{ 'none' }} @else {{ 'inline' }} @endif" class="col-md-3 index-{{$loop->index}}">
+                            <a href="profile/{{ $js_user->id }}">
+                            <img width="180px" height="180px" src="{{$js_user->profilePictureUrl()}}" alt="">
+                            <div style="color: red">{{ $js_user->name }} ({{ age($js_user->birth) }})</div>
+                            </a>
+                        </div>                       
+                        @endforeach
+                    </div>
 
+                </div>
+            </div>
 
             </div>
     </section>
+    @include('partials._search-box')
     <section>
         <div class="container">
                 <div class="card mt-2">

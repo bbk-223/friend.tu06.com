@@ -10,7 +10,7 @@
     @stack('styles')
     @vite('resources/js/app.js')
 </head>
-<body>
+<body id="fixed-nav">
     @php
         $my_count = 0;
     @endphp
@@ -172,5 +172,7 @@
           my_count+=1;
       </script>
     @endauth
+
+    <script src="{{ asset('js/tu06/main.js') }}" type="module" defer></script>
 </body>
 </html>

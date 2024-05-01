@@ -12,8 +12,10 @@ class MainController extends Controller
 {
     function main() {
         $users = User::orderBy('id','DESC')->paginate(12);
+        $js_users = User::paginate(16);
         return view('home',[
             'users'=>$users,
+            'js_users'=>$js_users
         ]);
     }
 
