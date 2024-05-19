@@ -173,6 +173,5 @@
       </script>
     @endauth
 
-    <script src="{{ asset('js/tu06/main.js') }}" type="module" defer></script>
 </body>
 </html>

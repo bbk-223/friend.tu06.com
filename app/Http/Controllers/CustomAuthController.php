@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CustomAuthController extends Controller
 {
     function dashboard(Request $request) {
-        $request->session()->flash('welcome','Sie haben sich erfolgreich angemeldet.');
+        $request->session()->flash('welcome','Hallo '.auth()->user()->name.', Sie haben sich erfolgreich angemeldet.');
         $users = User::orderBy('id','DESC')->paginate(12);
         $js_users = User::paginate(16);
 

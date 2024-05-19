@@ -5,7 +5,7 @@
     <section>
         <div class="container mt-2 mb-2">
             @if (session('welcome'))
-                <div class="text-center alert alert-success">{{ session('welcome') }}</div>
+                <div class="text-center alert alert-success">{{ session('welcome') }} Bitte vervollständigen Sie <a href="settings/profile-information">hier</a> Ihr Profil.</div>
             @endif
         </div>
 
@@ -119,4 +119,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+@endpush
+@push('scripts')
+    <script src="{{ asset('js/tu06/main.js') }}" defer type="module"></script>
 @endpush
