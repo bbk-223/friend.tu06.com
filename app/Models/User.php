@@ -61,7 +61,7 @@ class User extends Authenticatable
         }elseif($this->profile_picture && $this->profile_picture == 'test'){
             return "https://source.unsplash.com/500x500?face-" . rand(1, 1000);
         }else{
-            return "https://via.placeholder.com/150x150";
+            return asset('icon/150x150.png');
         }
     }
 

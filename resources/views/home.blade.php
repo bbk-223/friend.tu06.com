@@ -121,5 +121,5 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endpush
 @push('scripts')
-    <script src="{{ asset('js/tu06/main.js') }}" defer type="module"></script>
+    <script src="{{ asset('myjs/tu06/main.js') }}" type="module" defer></script>
 @endpush

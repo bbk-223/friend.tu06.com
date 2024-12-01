@@ -1,5 +1,5 @@
-import { fixedNavbar } from "./class/fixedNavbar.js";
-import { homeJs } from "./class/homeJs.js";
+import { fixedNavbar } from "./classes/fixedNavbar.js";
+import { homeJs } from "./classes/homeJs.js";
 
 const nav = new fixedNavbar();
 nav.fixed_search_navbar();
